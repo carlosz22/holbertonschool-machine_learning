@@ -5,6 +5,6 @@
 
 def cat_arrays(arr1, arr2):
     """Concatenates two arrays"""
-    result = arr1
+    result = arr1[:]
     result.extend(arr2)
     return result
