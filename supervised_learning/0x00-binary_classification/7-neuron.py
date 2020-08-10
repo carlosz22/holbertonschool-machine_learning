@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """Defines a Neuron for binary classification"""
-import cupy as np
+import numpy as np
 import matplotlib.pyplot as plt
 
 
@@ -99,7 +99,8 @@ class Neuron:
 
         if verbose is True:
             for i in range(len(cost_data)):
-                print("Cost after {} iterations: {}".format(step_data[i], cost_data[i]))
+                print("Cost after {} iterations: {}"
+                .format(step_data[i], cost_data[i]))
 
         if graph is True:
             plt.plot(step_data, cost_data, 'b-')
