@@ -88,8 +88,8 @@ class DeepNeuralNetwork:
                 dZ = cache['A' + str(self.__L)] - Y
             else:
                 dZ = dA * (cache['A' + lay]) * (1 - cache['A' + lay])
-            dW = 1/m * np.matmul(dZ, cache['A' + lay_min_1].T)
-            db = 1/m * np.sum(dZ, axis=1, keepdims=True)
+            dW = np.matmul(dZ, cache['A' + lay_min_1].T) / m
+            db = np.sum(dZ, axis=1, keepdims=True) / m
             dA = np.matmul(self.__weights['W' + lay].T, dZ)
             self.__weights['W' + lay] = self.__weights['W' + lay] - \
                 (alpha * dW)
