@@ -129,7 +129,7 @@ class DeepNeuralNetwork:
 
         if verbose is True:
             print("Cost after {} iterations: {}"
-                .format(step_data[0], cost_data[0]))
+                  .format(step_data[0], cost_data[0]))
 
         for i in range(1, iterations + 1):
             self.gradient_descent(Y, self.__cache, alpha)
@@ -139,7 +139,7 @@ class DeepNeuralNetwork:
                 step_data.append(i)
                 if verbose is True:
                     print("Cost after {} iterations: {}"
-                    .format(i, cost))
+                          .format(i, cost))
 
         if graph is True:
             plt.plot(step_data, cost_data, 'b-')
