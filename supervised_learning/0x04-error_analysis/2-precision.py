@@ -14,4 +14,4 @@ def precision(confusion):
         Returns: a numpy.ndarray of shape (classes,) containing
          the precision of each class
     """
-    return np.diag(confusion) / np.sum(confusion, axis=1)
+    return np.diag(confusion) / np.sum(confusion, axis=0)
