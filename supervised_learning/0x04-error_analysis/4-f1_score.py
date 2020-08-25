@@ -13,7 +13,8 @@ def f1_score(confusion):
       where row indices represent the correct labels and column indices
       represent the predicted labels
     - classes is the number of classes
-    Returns: a numpy.ndarray of shape (classes,) containing the F1 score of each class
+    Returns: a numpy.ndarray of shape (classes,)
+     containing the F1 score of each class
   """
   sens_value = sensitivity(confusion)
   prec_value = precision(confusion)
