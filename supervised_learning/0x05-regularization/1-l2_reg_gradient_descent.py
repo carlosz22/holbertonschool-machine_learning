@@ -32,11 +32,10 @@ def l2_reg_gradient_descent(Y, weights, cache, alpha, lambtha, L):
         lay_min_1 = str(i)
         if i == (L - 1):
             dZ = cache['A' + str(L)] - Y
-            dW = (np.matmul(dZ, cache['A' + lay_min_1].T) / m)
         else:
-            dZ = dA * (1 - np.tanh(cache['A' + lay]) ** 2)
-            dW = (np.matmul(dZ, cache['A' + lay_min_1].T) / m) + \
-                ((lambtha / m) * weights_c['W' + lay])
+            dZ = dA * (cache['A' + lay]) * (1 - cache['A' + lay])
+        dW = (np.matmul(dZ, cache['A' + lay_min_1].T) / m) + \
+            ((lambtha / m) * weights_c['W' + lay])
         db = np.sum(dZ, axis=1, keepdims=True) / m
         dA = np.matmul(weights_c['W' + lay].T, dZ)
         weights['W' + lay] = weights_c['W' + lay] - \
