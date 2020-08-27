@@ -2,7 +2,6 @@
 
 """Calculates the cost of a neural network with L2 regularization
  using Tensorflow"""
-import numpy as np
 import tensorflow as tf
 
 
