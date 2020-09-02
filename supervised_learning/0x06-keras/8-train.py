@@ -41,7 +41,7 @@ def train_model(network, data, labels,
                                        mode='min')
         callbacks.append(es)
 
-    if filepath and save_best:
+    if save_best:
         mcp_save = K.callbacks.ModelCheckpoint(filepath,
                                                save_best_only=True,
                                                monitor='val_loss',
