@@ -31,6 +31,13 @@ def train_model(network, data, labels,
         """Calculates the inverse time decay in each epoch"""
         return alpha / (1 + decay_rate * epoch)
 
+    if save_best:
+        mcp_save = K.callbacks.ModelCheckpoint(filepath,
+                                               save_best_only=True,
+                                               monitor='val_loss',
+                                               mode='min')
+        callbacks.append(mcp_save)
+
     if validation_data and learning_rate_decay:
         lr_decay = K.callbacks.LearningRateScheduler(learning_rate_decay,
                                                      verbose=1)
@@ -40,13 +47,6 @@ def train_model(network, data, labels,
         es = K.callbacks.EarlyStopping(monitor='val_loss', patience=patience,
                                        mode='min')
         callbacks.append(es)
-
-    if save_best:
-        mcp_save = K.callbacks.ModelCheckpoint(filepath,
-                                               save_best_only=True,
-                                               monitor='val_loss',
-                                               mode='min')
-        callbacks.append(mcp_save)
 
     history = network.fit(x=data, y=labels, batch_size=batch_size,
                           epochs=epochs, verbose=verbose, shuffle=shuffle,
