@@ -31,9 +31,9 @@ def train_model(network, data, labels,
         """Calculates the inverse time decay in each epoch"""
         return alpha / (1 + decay_rate * epoch)
 
-    if save_best:
+    if filepath:
         mcp_save = K.callbacks.ModelCheckpoint(filepath,
-                                               save_best_only=True,
+                                               save_best_only=save_best,
                                                monitor='val_loss',
                                                mode='min')
         callbacks.append(mcp_save)
