@@ -25,15 +25,17 @@ def train_model(network, data, labels,
         - filepath is the file path where the model should be saved
     """
 
-    callbacks = []
-
     def learning_rate_decay(epoch):
         """Calculates the inverse time decay in each epoch"""
         return alpha / (1 + decay_rate * epoch)
 
+    callbacks = []
+
     if filepath:
         mcp_save = K.callbacks.ModelCheckpoint(filepath,
-                                               save_best_only=save_best)
+                                               save_best_only=save_best,
+                                               monitor='val_loss',
+                                               mode='min')
         callbacks.append(mcp_save)
 
     if validation_data and learning_rate_decay:
