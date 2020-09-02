@@ -33,9 +33,7 @@ def train_model(network, data, labels,
 
     if filepath:
         mcp_save = K.callbacks.ModelCheckpoint(filepath,
-                                               save_best_only=save_best,
-                                               monitor='val_loss',
-                                               mode='min')
+                                               save_best_only=save_best)
         callbacks.append(mcp_save)
 
     if validation_data and learning_rate_decay:
