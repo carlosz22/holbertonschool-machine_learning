@@ -49,7 +49,7 @@ def pool(images, kernel_shape, stride, mode='max'):
                                                     y * sh: y * sh + kh,
                                                     x * sw: x * sw + kw],
                                              axis=(1, 2))
-            elif mode == 'max':
+            if mode == 'max':
                 output[:, y, x, :] = np.max(images[:,
                                                    y * sh: y * sh + kh,
                                                    x * sw: x * sw + kw],
