@@ -63,12 +63,12 @@ def convolve(images, kernels, padding='same', stride=(1, 1)):
 
     output_h = int((pad_images.shape[1] - kh) / sh + 1)
     output_w = int((pad_images.shape[2] - kw) / sw + 1)
-    output = np.zeros((m, output_h, output_w))
+    output = np.zeros((m, output_h, output_w, nc))
 
     for x in range(output_w):
         for y in range(output_h):
             for k in range(nc):
-                output[:, y, x] = (kernels[:, :, :, k] *
+                output[:, y, x, k] = (kernels[:, :, :, k] *
                                    pad_images[:,
                                               y * sh: y * sh + kh,
                                               x * sw: x * sw + kw,
