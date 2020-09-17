@@ -76,10 +76,9 @@ def inception_network():
     Y = inception_block(Y, [384, 192, 384, 48, 128, 128])
 
     pool_5 = K.layers.AveragePooling2D(pool_size=(7, 7),
-                                       strides=(1, 1),
-                                       padding='valid')(Y)
+                                       padding='same')(Y)
 
-    dropout = K.layers.Dropout(0.6)(pool_5)
+    dropout = K.layers.Dropout(0.4)(pool_5)
 
     linear = K.layers.Dense(units=1000,
                             activation='softmax',
