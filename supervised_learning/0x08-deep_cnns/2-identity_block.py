@@ -26,7 +26,6 @@ def identity_block(A_prev, filters):
     F11 = K.layers.Conv2D(filters=filters[0],
                           kernel_size=(1, 1),
                           padding='same',
-                          activation='relu',
                           kernel_initializer=initializer,
                           )(A_prev)
 
@@ -37,7 +36,6 @@ def identity_block(A_prev, filters):
     F3 = K.layers.Conv2D(filters=filters[1],
                          kernel_size=(3, 3),
                          padding='same',
-                         activation='relu',
                          kernel_initializer=initializer,
                          )(relu)
 
@@ -48,7 +46,6 @@ def identity_block(A_prev, filters):
     F12 = K.layers.Conv2D(filters=filters[2],
                           kernel_size=(1, 1),
                           padding='same',
-                          activation='relu',
                           kernel_initializer=initializer,
                           )(relu)
 
