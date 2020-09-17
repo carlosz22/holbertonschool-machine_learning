@@ -49,4 +49,4 @@ def dense_block(X, nb_filters, growth_rate, layers):
         X = K.layers.concatenate([X, layer])
         nb_filters += growth_rate
 
-    return layer, nb_filters
+    return X, nb_filters
