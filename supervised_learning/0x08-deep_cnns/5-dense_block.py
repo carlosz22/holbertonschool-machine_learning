@@ -26,7 +26,7 @@ def dense_block(X, nb_filters, growth_rate, layers):
     initializer = K.initializers.he_normal(seed=None)
 
     for _ in range(layers):
-        layer = K.layers.BatchNormalization(axis=3)(X)
+        layer = K.layers.BatchNormalization()(X)
 
         layer = K.layers.Activation('relu')(layer)
 
@@ -36,7 +36,7 @@ def dense_block(X, nb_filters, growth_rate, layers):
                                 kernel_initializer=initializer,
                                 )(layer)
 
-        layer = K.layers.BatchNormalization(axis=3)(layer)
+        layer = K.layers.BatchNormalization()(layer)
 
         layer = K.layers.Activation('relu')(layer)
 
