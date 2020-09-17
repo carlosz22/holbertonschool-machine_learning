@@ -81,7 +81,7 @@ def inception_network():
     dropout = K.layers.Dropout(0.6)(pool_5)
 
     linear = K.layers.Dense(units=1000,
-                            activation='relu',
+                            activation='softmax',
                             kernel_initializer=initializer,
                             )(dropout)
 
