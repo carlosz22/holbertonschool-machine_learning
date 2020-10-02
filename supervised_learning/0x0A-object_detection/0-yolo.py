@@ -25,9 +25,8 @@ class Yolo:
              prediction
                 2 => [anchor_box_width, anchor_box_height]"""
         self.model = K.models.load_model(model_path)
-        with open(classes_path, 'r') as classes_file:
-            classes = classes_file.readlines()
-            self.class_names = [line for line in classes]
+        with open(classes_path, 'r') as file:
+            self.class_names = [line.rstrip() for line in file]
         self.class_t = class_t
         self.nms_t = nms_t
         self.anchors = anchors
