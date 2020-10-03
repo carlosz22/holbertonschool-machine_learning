@@ -133,7 +133,7 @@ class Yolo:
                 j = i + 1
                 while j < accumulated_count + class_count:
 
-                    box1 = box_predicitions[i]
+                    box1 = box_predictions[i]
                     box2 = box_predictions[j]
                     xi1 = max(box1[0], box2[0])
                     yi1 = max(box1[1], box2[1])
